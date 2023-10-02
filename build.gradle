@@ -31,6 +31,12 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'mysql:mysql-connector-java:8.0.26'
 	implementation 'org.modelmapper:modelmapper:2.4.4'
+	annotationProcessor("org.mapstruct:mapstruct-processor:1.4.2.Final")
+	implementation("org.mapstruct:mapstruct:1.4.2.Final")
+	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-impl:0.11.2'
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.11.2'
 }
 
 tasks.named('test') {

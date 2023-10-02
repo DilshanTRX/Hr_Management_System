@@ -2,6 +2,7 @@ package com.hr_api.Hr_Management_System;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 @SpringBootApplication
 public class HrManagementSystemApplication {
@@ -11,3 +12,4 @@ public class HrManagementSystemApplication {
 	}
 
 }
+//(exclude = { SecurityAutoConfiguration.class })
