@@ -1,19 +1,18 @@
 package com.hr_api.Hr_Management_System.models.user;
 
-import com.hr_api.Hr_Management_System.enums.UserType;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.Date;
 
-@Entity(name = "user")
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity(name = "user")
 public class User {
     @Id
     @Column(name = "id", unique = true)
@@ -21,6 +20,7 @@ public class User {
 
     @Column(name = "user_id", unique = true)
     private String userId;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -29,6 +29,17 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+    private String email;
+
+//    @OneToOne
+//    @JoinColumn(name ="user_user_id")
+//    private Employee userUserId;
+
+//    private Collection<UserType> roles;
+//    @Enumerated(EnumType.STRING)
+//    private String role;
+
 
 //    @Column(name = "user_type")
 //    @Enumerated(EnumType.STRING)
@@ -55,8 +66,6 @@ public class User {
 //
 //    @Column(name = "etf_number", unique = true)
 //    private int etfNumber;
-
-
 
 //    @Column(name = "full_name")
 //    private int fullName;
