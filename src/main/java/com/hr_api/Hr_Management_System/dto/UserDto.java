@@ -13,6 +13,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String password;
+    private String email;
 //    private UserType userType;
 //    private String employeeName;
 //    private String office_Email;

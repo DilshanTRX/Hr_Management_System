@@ -10,11 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/hr/")
+@RequestMapping("/api/hr")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
     @Autowired
     UserService userService;
-    @PostMapping("")
+
+    @PostMapping("/insert")
     public @ResponseBody UserDto insertUser(@RequestBody UserDto userInput) {
         User user = userService.insertUser(userInput);
         UserDto userDto = new UserDto();
@@ -22,6 +24,7 @@ public class UserController {
         userDto.setUserId(user.getUserId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
 //        userDto.setPassword(user.getPassword());
         return userDto;
     }
@@ -35,6 +38,7 @@ public class UserController {
             userDto.setUserId(user.getUserId());
             userDto.setFirstName(user.getFirstName());
             userDto.setLastName(user.getLastName());
+            userDto.setEmail(user.getEmail());
             userDtoList.add(userDto);
         }
         return userDtoList;
@@ -47,6 +51,7 @@ public class UserController {
         userDto.setUserId(user.getUserId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
         return userDto;
     }
     @PutMapping("update/{id}")
@@ -56,10 +61,24 @@ public class UserController {
         userDto.setUserId(user.getUserId());
         userDto.setFirstName(user.getFirstName());
         userDto.setLastName(user.getLastName());
+        userDto.setEmail(user.getEmail());
         return userDto;
     }
     @DeleteMapping("/delete/{id}")
     public void deleteById(@PathVariable ("id") String id ){
         userService.deleteUserById(id);
+    }
+
+    @PostMapping("/login")
+    public UserDto login(@RequestParam("email") String email,
+                        @RequestParam("password") String password) {
+       User user = userService.loginUser(email,password);
+       UserDto userDto= new UserDto();
+       userDto.setId(user.getId());
+       userDto.setUserId(user.getUserId());
+       userDto.setFirstName(user.getFirstName());
+       userDto.setLastName(user.getLastName());
+       userDto.setEmail(user.getEmail());
+       return userDto;
     }
 }
